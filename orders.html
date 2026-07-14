@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura POS - Place Order</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">A</div>
+        <span class="logo-text">Aura POS</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link">
+          <i class="bi bi-grid-1x2-fill"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="customers.html" class="nav-link">
+          <i class="bi bi-people-fill"></i>
+          <span>Customers</span>
+        </a>
+        <a href="items.html" class="nav-link">
+          <i class="bi bi-box-seam-fill"></i>
+          <span>Items</span>
+        </a>
+        <a href="orders.html" class="nav-link active">
+          <i class="bi bi-cart-fill"></i>
+          <span>Place Order</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AD</div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Manager</span>
+        </div>
+        <a href="login.html" class="logout-btn" title="Logout">
+          <i class="bi bi-box-arrow-right" style="font-size: 1.15rem;"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-title">
+          <h1>Place New Order</h1>
+        </div>
+        
+        <div class="header-actions">
+          <div class="search-bar">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Search product by name or code...">
+          </div>
+          
+          <div class="header-date">
+            <i class="bi bi-calendar3"></i>
+            <span>July 14, 2026</span>
+          </div>
+
+          <button class="header-btn" title="Notifications">
+            <i class="bi bi-bell-fill"></i>
+            <span class="notification-badge">3</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content" style="overflow: hidden;">
+        <div class="order-layout">
+          
+          <!-- Product Catalog Section (Left) -->
+          <div class="catalog-panel">
+            <!-- Category Selector Chips -->
+            <div class="catalog-filters">
+              <span class="filter-chip active">All Items</span>
+              <span class="filter-chip">Electronics</span>
+              <span class="filter-chip">Accessories</span>
+              <span class="filter-chip">Furniture</span>
+              <span class="filter-chip">Stationery</span>
+            </div>
+
+            <!-- Product Cards Catalog Grid -->
+            <div class="catalog-grid">
+              <div class="grid grid-cols-3" style="gap: 1rem;">
+                
+                <!-- Product 1 -->
+                <div class="product-card" style="cursor: pointer;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-keyboard" style="font-size: 2rem; color: var(--primary);"></i>
+                    <span class="badge badge-success product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> 45 Qty</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-001</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">Wireless Keyboard</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$45.00</span>
+                      <button class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="bi bi-plus-lg"></i> Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" style="cursor: pointer;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-mouse3" style="font-size: 2rem; color: var(--accent);"></i>
+                    <span class="badge badge-success product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> 82 Qty</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-002</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">Ergonomic Mouse</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$35.00</span>
+                      <button class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="bi bi-plus-lg"></i> Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" style="cursor: pointer;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-laptop" style="font-size: 2rem; color: var(--warning);"></i>
+                    <span class="badge badge-warning product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> 5 Qty</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-003</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">Aura Book Pro 13"</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$1,299.00</span>
+                      <button class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="bi bi-plus-lg"></i> Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" style="cursor: pointer; opacity: 0.6;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-display" style="font-size: 2rem; color: var(--danger);"></i>
+                    <span class="badge badge-danger product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> Out Stock</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-004</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">4K Gaming Monitor 32"</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$389.00</span>
+                      <button class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; cursor: not-allowed;" disabled>Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" style="cursor: pointer;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-headset" style="font-size: 2rem; color: var(--success);"></i>
+                    <span class="badge badge-success product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> 18 Qty</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-005</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">Noise Headset</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$120.00</span>
+                      <button class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="bi bi-plus-lg"></i> Add</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" style="cursor: pointer;">
+                  <div class="product-image-container" style="height: 120px;">
+                    <i class="bi bi-cable" style="font-size: 2rem; color: var(--text-secondary);"></i>
+                    <span class="badge badge-success product-badge" style="font-size: 0.65rem;"><span class="status-dot"></span> 120 Qty</span>
+                  </div>
+                  <div class="product-details" style="padding: 0.85rem; gap: 0.5rem;">
+                    <div class="product-meta">
+                      <span class="product-code" style="font-size: 0.65rem;">ITEM-006</span>
+                    </div>
+                    <h4 class="product-name" style="font-size: 0.85rem;">USB-C Cable</h4>
+                    <div class="product-price-row" style="padding-top: 0.5rem;">
+                      <span class="product-price" style="font-size: 1rem;">$15.00</span>
+                      <button class="btn btn-primary btn-sm" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"><i class="bi bi-plus-lg"></i> Add</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkout & Cart Section (Right) -->
+          <div class="cart-panel">
+            
+            <!-- Customer Detail Selector Header -->
+            <div class="cart-header" style="flex-direction: column; align-items: stretch; gap: 0.75rem; border-bottom: 1px solid var(--border-color);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;"><i class="bi bi-cart3" style="color: var(--primary);"></i> Current Cart</h3>
+                <span style="font-size: 0.8rem; font-weight: bold; color: var(--text-secondary); background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
+                  ID: ORD-8943
+                </span>
+              </div>
+              
+              <!-- Customer Selector Dropdown -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <select class="form-control" style="padding: 0.4rem 2rem 0.4rem 0.5rem; font-size: 0.8rem;">
+                    <option value="" disabled>Select Customer</option>
+                    <option value="CUST-001" selected>CUST-001 (Kasun)</option>
+                    <option value="CUST-002">CUST-002 (Nimal)</option>
+                    <option value="CUST-003">CUST-003 (Amali)</option>
+                    <option value="CUST-004">CUST-004 (Saman)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <input type="text" class="form-control" value="Kasun Perera" readonly style="font-size: 0.8rem; padding: 0.4rem 0.5rem; background-color: var(--bg-secondary); color: var(--text-muted); cursor: not-allowed;">
+                </div>
+              </div>
+            </div>
+
+            <!-- Cart Items List (Scrollable) -->
+            <div class="cart-items">
+              
+              <!-- Cart Item 1 -->
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <h4 class="cart-item-name">Wireless Keyboard</h4>
+                  <span class="cart-item-price">$45.00</span>
+                </div>
+                <div class="cart-qty-control">
+                  <button class="qty-btn"><i class="bi bi-dash"></i></button>
+                  <span class="qty-val">1</span>
+                  <button class="qty-btn"><i class="bi bi-plus"></i></button>
+                </div>
+                <span class="cart-item-subtotal">$45.00</span>
+                <button class="cart-item-remove" title="Remove"><i class="bi bi-trash-fill"></i></button>
+              </div>
+
+              <!-- Cart Item 2 -->
+              <div class="cart-item">
+                <div class="cart-item-info">
+                  <h4 class="cart-item-name">Ergonomic Mouse</h4>
+                  <span class="cart-item-price">$35.00</span>
+                </div>
+                <div class="cart-qty-control">
+                  <button class="qty-btn"><i class="bi bi-dash"></i></button>
+                  <span class="qty-val">2</span>
+                  <button class="qty-btn"><i class="bi bi-plus"></i></button>
+                </div>
+                <span class="cart-item-subtotal">$70.00</span>
+                <button class="cart-item-remove" title="Remove"><i class="bi bi-trash-fill"></i></button>
+              </div>
+
+            </div>
+
+            <!-- Cart Summary Panel (Bottom) -->
+            <div class="cart-summary">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span>$115.00</span>
+              </div>
+              <div class="summary-row" style="align-items: center;">
+                <span>Discount (10%)</span>
+                <span style="color: var(--danger); font-weight: 600;">-$11.50</span>
+              </div>
+              <div class="summary-row">
+                <span>Tax (8%)</span>
+                <span>$9.20</span>
+              </div>
+              
+              <!-- Total -->
+              <div class="summary-row total">
+                <span>Total Amount</span>
+                <span>$112.70</span>
+              </div>
+
+              <!-- Payment Method Toggle -->
+              <div style="margin-top: 0.5rem;">
+                <label style="font-size: 0.75rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; margin-bottom: 0.4rem; display: block;">Payment Method</label>
+                <div class="payment-options">
+                  <div class="payment-btn active">
+                    <i class="bi bi-cash-stack" style="font-size: 1rem;"></i>
+                    <span>Cash</span>
+                  </div>
+                  <div class="payment-btn">
+                    <i class="bi bi-credit-card-2-front-fill" style="font-size: 1rem;"></i>
+                    <span>Card</span>
+                  </div>
+                  <div class="payment-btn">
+                    <i class="bi bi-columns-gap" style="font-size: 1rem;"></i>
+                    <span>Split</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Checkout Button -->
+              <button class="btn btn-primary checkout-btn" onclick="alert('Order Placed Successfully! Total: $112.70'); window.location.href='dashboard.html';">
+                <i class="bi bi-check-circle-fill"></i> Complete Order
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>

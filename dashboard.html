@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura POS - Dashboard</title>
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">A</div>
+        <span class="logo-text">Aura POS</span>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-link active">
+          <i class="bi bi-grid-1x2-fill"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="customers.html" class="nav-link">
+          <i class="bi bi-people-fill"></i>
+          <span>Customers</span>
+        </a>
+        <a href="items.html" class="nav-link">
+          <i class="bi bi-box-seam-fill"></i>
+          <span>Items</span>
+        </a>
+        <a href="orders.html" class="nav-link">
+          <i class="bi bi-cart-fill"></i>
+          <span>Place Order</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar">AD</div>
+        <div class="user-info">
+          <span class="user-name">Admin User</span>
+          <span class="user-role">Manager</span>
+        </div>
+        <a href="login.html" class="logout-btn" title="Logout">
+          <i class="bi bi-box-arrow-right" style="font-size: 1.15rem;"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-title">
+          <h1>Dashboard Overview</h1>
+        </div>
+        
+        <div class="header-actions">
+          <div class="search-bar">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Search transactions, products...">
+          </div>
+          
+          <div class="header-date">
+            <i class="bi bi-calendar3"></i>
+            <span>July 14, 2026</span>
+          </div>
+
+          <button class="header-btn" title="Notifications">
+            <i class="bi bi-bell-fill"></i>
+            <span class="notification-badge">3</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Page Content -->
+      <main class="page-content">
+        <!-- Stats Cards Grid -->
+        <div class="grid grid-cols-4" style="margin-bottom: 2rem;">
+          
+          <!-- Card 1 -->
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Total Revenue</span>
+              <div class="stat-icon-wrapper success">
+                <i class="bi bi-currency-dollar" style="font-size: 1.25rem;"></i>
+              </div>
+            </div>
+            <div class="stat-value">$12,450.80</div>
+            <div class="stat-footer">
+              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +12.5%</span>
+              <span class="stat-desc">from last week</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Orders Processed</span>
+              <div class="stat-icon-wrapper primary">
+                <i class="bi bi-bag-check-fill" style="font-size: 1.25rem;"></i>
+              </div>
+            </div>
+            <div class="stat-value">348</div>
+            <div class="stat-footer">
+              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +8.2%</span>
+              <span class="stat-desc">from last week</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Active Customers</span>
+              <div class="stat-icon-wrapper warning">
+                <i class="bi bi-people-fill" style="font-size: 1.25rem;"></i>
+              </div>
+            </div>
+            <div class="stat-value">124</div>
+            <div class="stat-footer">
+              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +4.1%</span>
+              <span class="stat-desc">from last week</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="card stat-card">
+            <div class="stat-header">
+              <span class="stat-title">Stock Out Items</span>
+              <div class="stat-icon-wrapper danger">
+                <i class="bi bi-exclamation-triangle-fill" style="font-size: 1.25rem;"></i>
+              </div>
+            </div>
+            <div class="stat-value">6</div>
+            <div class="stat-footer">
+              <span class="trend-down"><i class="bi bi-arrow-down-short"></i> -2.4%</span>
+              <span class="stat-desc">improvement</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Charts and Main Info Section -->
+        <div class="grid grid-cols-3" style="margin-bottom: 2rem;">
+          
+          <!-- Sales Chart Mockup -->
+          <div class="card" style="grid-column: span 2;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3 style="font-weight: 700; font-size: 1.1rem;">Weekly Sales Analytics</h3>
+              <select class="form-control" style="width: auto; padding: 0.25rem 2rem 0.25rem 0.75rem; font-size: 0.8rem; background-color: var(--bg-surface);">
+                <option>This Week</option>
+                <option>Last Week</option>
+                <option>This Month</option>
+              </select>
+            </div>
+            
+            <div class="chart-container">
+              <!-- Grid lines -->
+              <div class="chart-grid-line line-25"></div>
+              <div class="chart-grid-line line-50"></div>
+              <div class="chart-grid-line line-75"></div>
+              
+              <!-- Bars -->
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 45%;" data-value="$1,200"></div>
+                <span class="chart-label">Mon</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 60%;" data-value="$1,600"></div>
+                <span class="chart-label">Tue</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 75%;" data-value="$2,100"></div>
+                <span class="chart-label">Wed</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 50%;" data-value="$1,450"></div>
+                <span class="chart-label">Thu</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 90%;" data-value="$2,700"></div>
+                <span class="chart-label">Fri</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 80%;" data-value="$2,350"></div>
+                <span class="chart-label">Sat</span>
+              </div>
+              <div class="chart-bar-wrapper">
+                <div class="chart-bar" style="height: 35%;" data-value="$980"></div>
+                <span class="chart-label">Sun</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Products -->
+          <div class="card">
+            <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem;">Top Selling Items</h3>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+              
+              <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary);">01</div>
+                <div style="flex: 1;">
+                  <h4 style="font-size: 0.875rem; font-weight: 700;">Wireless Keyboard</h4>
+                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Electronics • 142 sold</span>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$5,680.00</div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent);">02</div>
+                <div style="flex: 1;">
+                  <h4 style="font-size: 0.875rem; font-weight: 700;">Ergonomic Mouse</h4>
+                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Electronics • 98 sold</span>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$3,430.00</div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.25rem;">
+                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--success);">03</div>
+                <div style="flex: 1;">
+                  <h4 style="font-size: 0.875rem; font-weight: 700;">USB-C Docking Station</h4>
+                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Accessories • 64 sold</span>
+                </div>
+                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$2,240.00</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <div class="table-container">
+          <div class="table-header">
+            <h3>Recent Transactions</h3>
+            <a href="orders.html" class="btn btn-primary btn-sm">
+              <i class="bi bi-plus-lg"></i> New Order
+            </a>
+          </div>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Payment</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>#ORD-8942</td>
+                  <td>Kasun Perera</td>
+                  <td>Today, 02:40 PM</td>
+                  <td>$185.00</td>
+                  <td><span class="badge badge-primary"><i class="bi bi-credit-card-2-front-fill"></i> Card</span></td>
+                  <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
+                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
+                </tr>
+                <tr>
+                  <td>#ORD-8941</td>
+                  <td>Nimal Silva</td>
+                  <td>Today, 01:15 PM</td>
+                  <td>$45.50</td>
+                  <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
+                  <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
+                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
+                </tr>
+                <tr>
+                  <td>#ORD-8940</td>
+                  <td>Amali Fernando</td>
+                  <td>Today, 11:30 AM</td>
+                  <td>$320.00</td>
+                  <td><span class="badge badge-primary"><i class="bi bi-credit-card-2-front-fill"></i> Card</span></td>
+                  <td><span class="badge badge-warning"><span class="status-dot"></span> Pending</span></td>
+                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
+                </tr>
+                <tr>
+                  <td>#ORD-8939</td>
+                  <td>Saman Kumara</td>
+                  <td>Yesterday, 06:10 PM</td>
+                  <td>$12.00</td>
+                  <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
+                  <td><span class="badge badge-danger"><span class="status-dot"></span> Cancelled</span></td>
+                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+</body>
+</html>
