@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura POS - Manage Items</title>
+  <title>Bimsara POS - Manage Items</title>
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Shared CSS -->
@@ -15,8 +15,8 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <div class="logo-icon">A</div>
-        <span class="logo-text">Aura POS</span>
+        <div class="logo-icon">B</div>
+        <span class="logo-text">Bimsara POS</span>
       </div>
       
       <nav class="sidebar-nav">
@@ -123,9 +123,11 @@
                 <textarea id="item-desc" class="form-control" rows="3" placeholder="Enter item specifications..." style="resize: none;"></textarea>
               </div>
 
-              <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-                <button type="submit" class="btn btn-primary" style="flex: 1;">Save Item</button>
-                <button type="reset" class="btn btn-secondary" style="width: 80px;">Clear</button>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 80px;">Save</button>
+                <button type="button" class="btn btn-secondary" style="flex: 1; min-width: 80px; border-color: var(--primary); color: var(--primary);">Update</button>
+                <button type="button" class="btn btn-secondary" style="flex: 1; min-width: 80px; border-color: var(--danger); color: var(--danger);">Delete</button>
+                <button type="reset" class="btn btn-secondary" style="flex: 1; min-width: 80px;">Clear</button>
               </div>
             </form>
           </div>
@@ -137,7 +139,7 @@
               <h3 style="font-size: 1.1rem; font-weight: 700;">Product Catalog</h3>
               <div style="display: flex; gap: 0.75rem;">
                 <input type="text" id="item-search" class="form-control" placeholder="Search items..." style="padding: 0.25rem 0.75rem; font-size: 0.85rem;" onkeyup="renderItems()">
-                <select id="item-filter-category" class="form-control" style="width: auto; padding: 0.25rem 2rem 0.25rem 0.75rem; font-size: 0.85rem; background-color: var(--bg-surface);" onchange="renderItems()">
+                <select class="form-control" style="width: auto; padding: 0.25rem 2rem 0.25rem 0.75rem; font-size: 0.85rem; background-color: var(--bg-surface);">
                   <option value="all">All Categories</option>
                   <option value="electronics">Electronics</option>
                   <option value="accessories">Accessories</option>
@@ -148,8 +150,8 @@
             </div>
 
             <!-- Product Grid -->
-            <div class="grid grid-cols-3" id="item-catalog-grid">
-              <!-- Dynamic items will be injected here -->
+            <div class="grid grid-cols-3">
+              <!-- Items will be injected here -->
             </div>
           </div>
 
@@ -158,136 +160,5 @@
     </div>
   </div>
 
-  <script>
-    let items = JSON.parse(localStorage.getItem('items')) || [];
-    let editingId = null;
-
-    function generateId() {
-      if (items.length === 0) return 'ITEM-001';
-      const lastId = items[items.length - 1].code;
-      const num = parseInt(lastId.split('-')[1]) + 1;
-      return 'ITEM-' + num.toString().padStart(3, '0');
-    }
-
-    function initForm() {
-      document.getElementById('item-code').value = generateId();
-      document.getElementById('item-name').value = '';
-      document.getElementById('item-category').value = 'electronics';
-      document.getElementById('item-price').value = '';
-      document.getElementById('item-qty').value = '';
-      document.getElementById('item-desc').value = '';
-      editingId = null;
-    }
-
-    function saveItem() {
-      const code = document.getElementById('item-code').value;
-      const name = document.getElementById('item-name').value;
-      const category = document.getElementById('item-category').value;
-      const price = parseFloat(document.getElementById('item-price').value);
-      const qty = parseInt(document.getElementById('item-qty').value);
-      const desc = document.getElementById('item-desc').value;
-
-      if (!name || isNaN(price) || isNaN(qty)) return alert('Name, Price, and Qty are required.');
-
-      if (editingId) {
-        const index = items.findIndex(i => i.code === editingId);
-        if (index !== -1) {
-          items[index] = { code, name, category, price, qty, desc };
-        }
-      } else {
-        items.push({ code, name, category, price, qty, desc });
-      }
-
-      localStorage.setItem('items', JSON.stringify(items));
-      initForm();
-      renderItems();
-    }
-
-    function editItem(code) {
-      const item = items.find(i => i.code === code);
-      if (item) {
-        document.getElementById('item-code').value = item.code;
-        document.getElementById('item-name').value = item.name;
-        document.getElementById('item-category').value = item.category;
-        document.getElementById('item-price').value = item.price;
-        document.getElementById('item-qty').value = item.qty;
-        document.getElementById('item-desc').value = item.desc || '';
-        editingId = item.code;
-      }
-    }
-
-    function deleteItem(code) {
-      if (confirm('Are you sure you want to delete this item?')) {
-        items = items.filter(i => i.code !== code);
-        localStorage.setItem('items', JSON.stringify(items));
-        renderItems();
-      }
-    }
-
-    function renderItems() {
-      const grid = document.getElementById('item-catalog-grid');
-      const searchQuery = document.getElementById('item-search').value.toLowerCase();
-      const filterCategory = document.getElementById('item-filter-category').value;
-      
-      grid.innerHTML = '';
-      
-      const filtered = items.filter(i => {
-        const matchSearch = i.name.toLowerCase().includes(searchQuery) || i.code.toLowerCase().includes(searchQuery);
-        const matchCat = filterCategory === 'all' || i.category === filterCategory;
-        return matchSearch && matchCat;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div style="grid-column: span 3; text-align: center; padding: 2rem;">No items found.</div>';
-        return;
-      }
-
-      filtered.forEach(i => {
-        let badgeClass = 'badge-success';
-        let badgeText = 'In Stock';
-        if (i.qty <= 0) { badgeClass = 'badge-danger'; badgeText = 'Out of Stock'; }
-        else if (i.qty < 10) { badgeClass = 'badge-warning'; badgeText = 'Low Stock'; }
-
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <div class="product-image-container">
-            <div class="product-image-placeholder" style="height: 100px; display: flex; align-items: center; justify-content: center; background: var(--bg-surface); border-bottom: 1px solid var(--border-color);">
-              <i class="bi bi-box" style="font-size: 2rem; color: var(--text-muted);"></i>
-            </div>
-            <span class="badge ${badgeClass} product-badge" style="position: absolute; top: 0.5rem; right: 0.5rem;"><span class="status-dot"></span> ${badgeText}</span>
-          </div>
-          <div class="product-details" style="padding: 1rem;">
-            <div class="product-meta" style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-              <span class="product-code" style="font-size: 0.75rem; font-weight: bold; padding: 0.1rem 0.4rem; background: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px solid var(--border-color);">${i.code}</span>
-              <span class="product-stock" style="font-size: 0.75rem; color: var(--text-secondary);">${i.qty} units left</span>
-            </div>
-            <h4 class="product-name" style="font-size: 0.95rem; font-weight: bold; margin-bottom: 0.5rem;">${i.name}</h4>
-            <div class="product-price-row" style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 0.5rem;">
-              <span class="product-price" style="font-weight: bold;">$${parseFloat(i.price).toFixed(2)}</span>
-              <div style="display: flex; gap: 0.25rem;">
-                <button onclick="editItem('${i.code}')" class="btn btn-secondary btn-sm btn-icon" title="Edit"><i class="bi bi-pencil-fill"></i></button>
-                <button onclick="deleteItem('${i.code}')" class="btn btn-secondary btn-sm btn-icon" title="Delete"><i class="bi bi-trash-fill"></i></button>
-              </div>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    document.querySelector('form').onsubmit = (e) => {
-      e.preventDefault();
-      saveItem();
-    };
-
-    document.querySelector('form').onreset = () => {
-      setTimeout(initForm, 0);
-    };
-
-    // Initialize
-    initForm();
-    renderItems();
-  </script>
 </body>
 </html>
