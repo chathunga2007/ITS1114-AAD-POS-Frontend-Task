@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bimsara POS - Place Order</title>
-  <!-- Bootstrap Icons CDN -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- Shared CSS -->
-  <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <div class="app-container">
-    <!-- Sidebar -->
-    <aside class="sidebar">
+        <aside class="sidebar">
       <div class="sidebar-logo">
         <div class="logo-icon">B</div>
         <span class="logo-text">Bimsara POS</span>
@@ -50,10 +47,8 @@
       </div>
     </aside>
 
-    <!-- Main Wrapper -->
-    <div class="main-wrapper">
-      <!-- Header -->
-      <header class="main-header">
+        <div class="main-wrapper">
+            <header class="main-header">
         <div class="header-title">
           <h1>Place New Order</h1>
         </div>
@@ -76,14 +71,11 @@
         </div>
       </header>
 
-      <!-- Page Content -->
-      <main class="page-content" style="overflow: hidden;">
+            <main class="page-content" style="overflow: hidden;">
         <div class="order-layout">
           
-          <!-- Product Catalog Section (Left) -->
-          <div class="catalog-panel">
-            <!-- Category Selector Chips -->
-            <div class="catalog-filters">
+                    <div class="catalog-panel">
+                        <div class="catalog-filters">
               <span class="filter-chip active">All Items</span>
               <span class="filter-chip">Electronics</span>
               <span class="filter-chip">Accessories</span>
@@ -93,16 +85,13 @@
 
             <div class="catalog-grid">
               <div class="grid grid-cols-3" style="gap: 1rem;">
-                <!-- Items will be injected here -->
-              </div>
+                              </div>
             </div>
           </div>
 
-          <!-- Checkout & Cart Section (Right) -->
-          <div class="cart-panel">
+                    <div class="cart-panel">
             
-            <!-- Customer Detail Selector Header -->
-            <div class="cart-header" style="flex-direction: column; align-items: stretch; gap: 0.75rem; border-bottom: 1px solid var(--border-color);">
+                        <div class="cart-header" style="flex-direction: column; align-items: stretch; gap: 0.75rem; border-bottom: 1px solid var(--border-color);">
               <div style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 style="margin: 0;"><i class="bi bi-cart3" style="color: var(--primary);"></i> Current Cart</h3>
                 <span style="font-size: 0.8rem; font-weight: bold; color: var(--text-secondary); background: var(--bg-secondary); padding: 0.25rem 0.5rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color);">
@@ -110,8 +99,7 @@
                 </span>
               </div>
               
-              <!-- Customer Selector Dropdown -->
-              <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 0.5rem;">
                 <div class="form-group" style="margin-bottom: 0;">
                   <select class="form-control" style="padding: 0.4rem 2rem 0.4rem 0.5rem; font-size: 0.8rem;">
                     <option value="" disabled selected>Select Customer</option>
@@ -120,13 +108,10 @@
               </div>
             </div>
 
-            <!-- Cart Items List (Scrollable) -->
-            <div class="cart-items">
-              <!-- Cart items will be injected here -->
-            </div>
+                        <div class="cart-items">
+                          </div>
 
-            <!-- Cart Summary Panel (Bottom) -->
-            <div class="cart-summary">
+                        <div class="cart-summary">
               <div class="summary-row">
                 <span>Subtotal</span>
                 <span>$45.00</span>
@@ -136,8 +121,7 @@
                 <input type="number" class="form-control" style="width: 70px; text-align: right; padding: 0.25rem;" value="0" min="0" max="100">
               </div>
               
-              <!-- Total -->
-              <div class="summary-row total">
+                            <div class="summary-row total">
                 <span>Total Amount</span>
                 <span>$45.00</span>
               </div>
@@ -151,8 +135,7 @@
                 <span>$0.00</span>
               </div>
 
-              <!-- Checkout Button -->
-              <button class="btn btn-primary checkout-btn">
+                <button class="btn btn-primary checkout-btn">
                 <i class="bi bi-check-circle-fill"></i> Complete Order
               </button>
             </div>
