@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura POS - Manage Customers</title>
+  <title>Bimsara POS - Manage Customers</title>
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Shared CSS -->
@@ -15,8 +15,8 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <div class="logo-icon">A</div>
-        <span class="logo-text">Aura POS</span>
+        <div class="logo-icon">B</div>
+        <span class="logo-text">Bimsara POS</span>
       </div>
       
       <nav class="sidebar-nav">
@@ -120,9 +120,11 @@
                 </select>
               </div>
 
-              <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-                <button type="submit" class="btn btn-primary" style="flex: 1;">Save Customer</button>
-                <button type="reset" class="btn btn-secondary" style="width: 80px;">Clear</button>
+              <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                <button type="submit" class="btn btn-primary" style="flex: 1; min-width: 80px;">Save</button>
+                <button type="button" class="btn btn-secondary" style="flex: 1; min-width: 80px; border-color: var(--primary); color: var(--primary);">Update</button>
+                <button type="button" class="btn btn-secondary" style="flex: 1; min-width: 80px; border-color: var(--danger); color: var(--danger);">Delete</button>
+                <button type="reset" class="btn btn-secondary" style="flex: 1; min-width: 80px;">Clear</button>
               </div>
             </form>
           </div>
@@ -134,16 +136,16 @@
               <div style="display: flex; gap: 0.5rem; flex: 1; max-width: 320px;">
                 <div class="search-bar" style="width: 100%; height: 35px; padding: 0.25rem 0.75rem;">
                   <i class="bi bi-funnel"></i>
-                  <input type="text" id="customer-search" placeholder="Filter by name or city..." onkeyup="renderCustomers()">
+                  <input type="text" placeholder="Filter by name or city...">
                 </div>
               </div>
             </div>
-            
-            <div class="table-wrapper">
-              <table>
+
+            <div class="table-responsive">
+              <table class="table" style="font-size: 0.9rem;">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <th>Customer ID</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Contact</th>
@@ -152,7 +154,7 @@
                     <th style="text-align: right;">Actions</th>
                   </tr>
                 </thead>
-                <tbody id="customer-table-body">
+                <tbody>
                   <!-- Dynamic rows will be injected here -->
                 </tbody>
               </table>
@@ -164,119 +166,5 @@
     </div>
   </div>
 
-  <script>
-    let customers = JSON.parse(localStorage.getItem('customers')) || [];
-    let editingId = null;
-
-    function generateId() {
-      if (customers.length === 0) return 'CUST-001';
-      const lastId = customers[customers.length - 1].id;
-      const num = parseInt(lastId.split('-')[1]) + 1;
-      return 'CUST-' + num.toString().padStart(3, '0');
-    }
-
-    function initForm() {
-      document.getElementById('cust-id').value = generateId();
-      document.getElementById('cust-name').value = '';
-      document.getElementById('cust-email').value = '';
-      document.getElementById('cust-contact').value = '';
-      document.getElementById('cust-address').value = '';
-      document.getElementById('cust-status').value = 'active';
-      editingId = null;
-    }
-
-    function saveCustomer() {
-      const id = document.getElementById('cust-id').value;
-      const name = document.getElementById('cust-name').value;
-      const email = document.getElementById('cust-email').value;
-      const contact = document.getElementById('cust-contact').value;
-      const address = document.getElementById('cust-address').value;
-      const status = document.getElementById('cust-status').value;
-
-      if (!name || !contact) return alert('Name and contact are required.');
-
-      if (editingId) {
-        const index = customers.findIndex(c => c.id === editingId);
-        if (index !== -1) {
-          customers[index] = { id, name, email, contact, address, status };
-        }
-      } else {
-        customers.push({ id, name, email, contact, address, status });
-      }
-
-      localStorage.setItem('customers', JSON.stringify(customers));
-      initForm();
-      renderCustomers();
-    }
-
-    function editCustomer(id) {
-      const cust = customers.find(c => c.id === id);
-      if (cust) {
-        document.getElementById('cust-id').value = cust.id;
-        document.getElementById('cust-name').value = cust.name;
-        document.getElementById('cust-email').value = cust.email;
-        document.getElementById('cust-contact').value = cust.contact;
-        document.getElementById('cust-address').value = cust.address;
-        document.getElementById('cust-status').value = cust.status;
-        editingId = cust.id;
-      }
-    }
-
-    function deleteCustomer(id) {
-      if (confirm('Are you sure you want to delete this customer?')) {
-        customers = customers.filter(c => c.id !== id);
-        localStorage.setItem('customers', JSON.stringify(customers));
-        renderCustomers();
-      }
-    }
-
-    function renderCustomers() {
-      const tbody = document.getElementById('customer-table-body');
-      const searchQuery = document.getElementById('customer-search').value.toLowerCase();
-      tbody.innerHTML = '';
-      
-      const filtered = customers.filter(c => 
-        c.name.toLowerCase().includes(searchQuery) || 
-        c.address.toLowerCase().includes(searchQuery) ||
-        c.contact.toLowerCase().includes(searchQuery)
-      );
-
-      if (filtered.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No customers found.</td></tr>';
-        return;
-      }
-
-      filtered.forEach(c => {
-        const badgeClass = c.status === 'active' ? 'badge-success' : 'badge-warning';
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td style="font-weight: 700; color: var(--text-primary);">${c.id}</td>
-          <td>${c.name}</td>
-          <td style="color: var(--text-secondary);">${c.email}</td>
-          <td>${c.contact}</td>
-          <td>${c.address}</td>
-          <td><span class="badge ${badgeClass}">${c.status}</span></td>
-          <td style="text-align: right; display: flex; gap: 0.5rem; justify-content: flex-end;">
-            <button onclick="editCustomer('${c.id}')" class="btn btn-secondary btn-sm btn-icon" title="Edit"><i class="bi bi-pencil-fill"></i></button>
-            <button onclick="deleteCustomer('${c.id}')" class="btn btn-secondary btn-sm btn-icon" title="Delete" style="color: var(--text-primary); border-color: var(--text-primary);"><i class="bi bi-trash-fill"></i></button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    document.querySelector('form').onsubmit = (e) => {
-      e.preventDefault();
-      saveCustomer();
-    };
-
-    document.querySelector('form').onreset = () => {
-      setTimeout(initForm, 0);
-    };
-
-    // Initialize
-    initForm();
-    renderCustomers();
-  </script>
 </body>
 </html>
