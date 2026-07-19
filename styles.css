@@ -1,34 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #09090b;
-  --bg-secondary: #0f0f13;
-  --bg-surface: #18181b;
-  --bg-surface-hover: #222227;
-  --bg-card: #18181b;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f4f4f5;
+  --bg-card: #ffffff;
   
-  --border-color: #27272a;
-  --border-color-hover: #3f3f46;
+  --border-color: #e4e4e7;
+  --border-color-hover: #a1a1aa;
   
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
   
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --primary-light: rgba(99, 102, 241, 0.15);
+  --primary: #09090b;
+  --primary-hover: #27272a;
+  --primary-light: #f4f4f5;
   
-  --accent: #8b5cf6;
-  --accent-hover: #7c3aed;
+  --accent: #27272a;
+  --accent-hover: #09090b;
   
-  --success: #10b981;
-  --success-light: rgba(16, 185, 129, 0.1);
+  --success: #09090b;
+  --success-light: #e4e4e7;
   
-  --warning: #f59e0b;
-  --warning-light: rgba(245, 158, 11, 0.1);
+  --warning: #52525b;
+  --warning-light: #f4f4f5;
   
-  --danger: #ef4444;
-  --danger-light: rgba(239, 68, 68, 0.1);
+  --danger: #27272a;
+  --danger-light: #e4e4e7;
   
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --sidebar-width: 260px;
@@ -36,7 +36,7 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-glow: 0 0 15px rgba(99, 102, 241, 0.25);
+  --shadow-glow: none;
   
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -115,7 +115,8 @@ body {
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   color: var(--text-primary);
   width: 2.25rem;
   height: 2.25rem;
@@ -132,9 +133,7 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
   letter-spacing: -0.5px;
-  background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
 }
 
 .sidebar-nav {
@@ -189,12 +188,13 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, #f43f5e, #ec4899);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-primary);
   font-size: 0.95rem;
 }
 
@@ -1089,16 +1089,16 @@ tr:hover td {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: white;
-  border: none;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4), var(--shadow-glow);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
   z-index: 99;
   transition: all 0.3s;
@@ -1131,7 +1131,9 @@ tr:hover td {
 .chart-bar {
   width: 100%;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  background: linear-gradient(to top, var(--primary), var(--accent));
+  background: var(--border-color-hover);
+  border: 1px solid var(--border-color);
+  border-bottom: none;
   transition: height 1s ease-in-out;
   position: relative;
 }
@@ -1171,3 +1173,76 @@ tr:hover td {
 .line-25 { bottom: 25%; }
 .line-50 { bottom: 50%; }
 .line-75 { bottom: 75%; }
+
+/* Modal / Receipt Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.receipt-modal {
+  background: #fff;
+  color: #000;
+  width: 350px;
+  max-width: 90vw;
+  padding: 2rem;
+  border-radius: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  font-family: 'Courier New', Courier, monospace;
+}
+.receipt-header {
+  text-align: center;
+  border-bottom: 1px dashed #000;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.receipt-items {
+  margin-bottom: 1rem;
+}
+.receipt-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+.receipt-totals {
+  border-top: 1px dashed #000;
+  padding-top: 1rem;
+}
+.receipt-totals-row {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.receipt-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.receipt-btn {
+  flex: 1;
+  padding: 0.5rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.receipt-btn.outline {
+  background: transparent;
+  color: #000;
+  border: 1px solid #000;
+}

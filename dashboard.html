@@ -89,7 +89,7 @@
                 <i class="bi bi-currency-dollar" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value">$12,450.80</div>
+            <div class="stat-value" id="dash-total-revenue">$0.00</div>
             <div class="stat-footer">
               <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +12.5%</span>
               <span class="stat-desc">from last week</span>
@@ -104,7 +104,7 @@
                 <i class="bi bi-bag-check-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value">348</div>
+            <div class="stat-value" id="dash-orders-processed">0</div>
             <div class="stat-footer">
               <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +8.2%</span>
               <span class="stat-desc">from last week</span>
@@ -119,7 +119,7 @@
                 <i class="bi bi-people-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value">124</div>
+            <div class="stat-value" id="dash-active-customers">0</div>
             <div class="stat-footer">
               <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +4.1%</span>
               <span class="stat-desc">from last week</span>
@@ -134,7 +134,7 @@
                 <i class="bi bi-exclamation-triangle-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value">6</div>
+            <div class="stat-value" id="dash-stock-out">0</div>
             <div class="stat-footer">
               <span class="trend-down"><i class="bi bi-arrow-down-short"></i> -2.4%</span>
               <span class="stat-desc">improvement</span>
@@ -198,35 +198,8 @@
           <!-- Top Products -->
           <div class="card">
             <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem;">Top Selling Items</h3>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-              
-              <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
-                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary);">01</div>
-                <div style="flex: 1;">
-                  <h4 style="font-size: 0.875rem; font-weight: 700;">Wireless Keyboard</h4>
-                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Electronics • 142 sold</span>
-                </div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$5,680.00</div>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
-                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent);">02</div>
-                <div style="flex: 1;">
-                  <h4 style="font-size: 0.875rem; font-weight: 700;">Ergonomic Mouse</h4>
-                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Electronics • 98 sold</span>
-                </div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$3,430.00</div>
-              </div>
-
-              <div style="display: flex; align-items: center; gap: 0.75rem; padding-bottom: 0.25rem;">
-                <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--success);">03</div>
-                <div style="flex: 1;">
-                  <h4 style="font-size: 0.875rem; font-weight: 700;">USB-C Docking Station</h4>
-                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Accessories • 64 sold</span>
-                </div>
-                <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$2,240.00</div>
-              </div>
-
+            <div style="display: flex; flex-direction: column; gap: 1rem;" id="dash-top-products">
+              <!-- Top products injected here -->
             </div>
           </div>
 
@@ -253,43 +226,8 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>#ORD-8942</td>
-                  <td>Kasun Perera</td>
-                  <td>Today, 02:40 PM</td>
-                  <td>$185.00</td>
-                  <td><span class="badge badge-primary"><i class="bi bi-credit-card-2-front-fill"></i> Card</span></td>
-                  <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
-                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
-                </tr>
-                <tr>
-                  <td>#ORD-8941</td>
-                  <td>Nimal Silva</td>
-                  <td>Today, 01:15 PM</td>
-                  <td>$45.50</td>
-                  <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
-                  <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
-                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
-                </tr>
-                <tr>
-                  <td>#ORD-8940</td>
-                  <td>Amali Fernando</td>
-                  <td>Today, 11:30 AM</td>
-                  <td>$320.00</td>
-                  <td><span class="badge badge-primary"><i class="bi bi-credit-card-2-front-fill"></i> Card</span></td>
-                  <td><span class="badge badge-warning"><span class="status-dot"></span> Pending</span></td>
-                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
-                </tr>
-                <tr>
-                  <td>#ORD-8939</td>
-                  <td>Saman Kumara</td>
-                  <td>Yesterday, 06:10 PM</td>
-                  <td>$12.00</td>
-                  <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
-                  <td><span class="badge badge-danger"><span class="status-dot"></span> Cancelled</span></td>
-                  <td><button class="btn btn-secondary btn-sm btn-icon"><i class="bi bi-eye-fill"></i></button></td>
-                </tr>
+              <tbody id="dash-recent-transactions">
+                <!-- Transactions injected here -->
               </tbody>
             </table>
           </div>
@@ -299,5 +237,83 @@
     </div>
   </div>
 
+  <script>
+    function initDashboard() {
+      const items = JSON.parse(localStorage.getItem('items')) || [];
+      const customers = JSON.parse(localStorage.getItem('customers')) || [];
+      const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+      // Calculate Stats
+      const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+      const ordersProcessed = orders.length;
+      const activeCustomers = customers.filter(c => c.status === 'active').length;
+      const stockOutItems = items.filter(i => i.qty <= 0).length;
+
+      document.getElementById('dash-total-revenue').textContent = '$' + totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      document.getElementById('dash-orders-processed').textContent = ordersProcessed;
+      document.getElementById('dash-active-customers').textContent = activeCustomers;
+      document.getElementById('dash-stock-out').textContent = stockOutItems;
+
+      // Calculate Top Products
+      let itemSales = {};
+      orders.forEach(o => {
+        o.items.forEach(i => {
+          if (!itemSales[i.code]) {
+            itemSales[i.code] = { name: i.name, category: i.category, qty: 0, rev: 0 };
+          }
+          itemSales[i.code].qty += i.cartQty;
+          itemSales[i.code].rev += (i.price * i.cartQty);
+        });
+      });
+
+      const topProducts = Object.values(itemSales).sort((a, b) => b.qty - a.qty).slice(0, 3);
+      const topProductsContainer = document.getElementById('dash-top-products');
+      topProductsContainer.innerHTML = '';
+      
+      if (topProducts.length === 0) {
+        topProductsContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.85rem;">No sales data available.</p>';
+      } else {
+        topProducts.forEach((tp, idx) => {
+          topProductsContainer.innerHTML += `
+            <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: ${idx===2 ? 'none' : '1px solid var(--border-color)'}; padding-bottom: ${idx===2 ? '0' : '0.75rem'};">
+              <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--text-primary); border: 1px solid var(--border-color);">0${idx + 1}</div>
+              <div style="flex: 1;">
+                <h4 style="font-size: 0.875rem; font-weight: 700;">${tp.name}</h4>
+                <span style="font-size: 0.75rem; color: var(--text-secondary);">${tp.category} &bull; ${tp.qty} sold</span>
+              </div>
+              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$${tp.rev.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
+            </div>
+          `;
+        });
+      }
+
+      // Recent Transactions
+      const recentOrders = [...orders].reverse().slice(0, 5);
+      const tbody = document.getElementById('dash-recent-transactions');
+      tbody.innerHTML = '';
+
+      if (recentOrders.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No recent transactions.</td></tr>';
+      } else {
+        recentOrders.forEach(o => {
+          const cust = customers.find(c => c.id === o.customer);
+          const custName = cust ? cust.name : o.customer;
+          tbody.innerHTML += `
+            <tr>
+              <td style="font-weight: bold;">${o.id}</td>
+              <td>${custName}</td>
+              <td style="color: var(--text-secondary);">${o.date}</td>
+              <td style="font-weight: bold;">$${o.total.toFixed(2)}</td>
+              <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
+              <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
+              <td><button class="btn btn-secondary btn-sm btn-icon" title="View details (Coming Soon)"><i class="bi bi-eye-fill"></i></button></td>
+            </tr>
+          `;
+        });
+      }
+    }
+
+    initDashboard();
+  </script>
 </body>
 </html>
