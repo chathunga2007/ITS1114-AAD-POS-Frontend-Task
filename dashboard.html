@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aura POS - Dashboard</title>
+  <title>Bimsara POS - Dashboard</title>
   <!-- Bootstrap Icons CDN -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Shared CSS -->
@@ -15,8 +15,8 @@
     <!-- Sidebar -->
     <aside class="sidebar">
       <div class="sidebar-logo">
-        <div class="logo-icon">A</div>
-        <span class="logo-text">Aura POS</span>
+        <div class="logo-icon">B</div>
+        <span class="logo-text">Bimsara POS</span>
       </div>
       
       <nav class="sidebar-nav">
@@ -53,26 +53,9 @@
     <!-- Main Wrapper -->
     <div class="main-wrapper">
       <!-- Header -->
-      <header class="main-header">
+      <header class="main-header" style="justify-content: flex-start;">
         <div class="header-title">
           <h1>Dashboard Overview</h1>
-        </div>
-        
-        <div class="header-actions">
-          <div class="search-bar">
-            <i class="bi bi-search"></i>
-            <input type="text" placeholder="Search transactions, products...">
-          </div>
-          
-          <div class="header-date">
-            <i class="bi bi-calendar3"></i>
-            <span>July 14, 2026</span>
-          </div>
-
-          <button class="header-btn" title="Notifications">
-            <i class="bi bi-bell-fill"></i>
-            <span class="notification-badge">3</span>
-          </button>
         </div>
       </header>
 
@@ -82,125 +65,47 @@
         <div class="grid grid-cols-4" style="margin-bottom: 2rem;">
           
           <!-- Card 1 -->
-          <div class="card stat-card">
+          <div class="card stat-card" style="padding-bottom: 1.5rem;">
             <div class="stat-header">
               <span class="stat-title">Total Revenue</span>
               <div class="stat-icon-wrapper success">
                 <i class="bi bi-currency-dollar" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value" id="dash-total-revenue">$0.00</div>
-            <div class="stat-footer">
-              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +12.5%</span>
-              <span class="stat-desc">from last week</span>
-            </div>
+            <div class="stat-value" style="margin-bottom: 0;">$1,250.00</div>
           </div>
 
           <!-- Card 2 -->
-          <div class="card stat-card">
+          <div class="card stat-card" style="padding-bottom: 1.5rem;">
             <div class="stat-header">
               <span class="stat-title">Orders Processed</span>
               <div class="stat-icon-wrapper primary">
                 <i class="bi bi-bag-check-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value" id="dash-orders-processed">0</div>
-            <div class="stat-footer">
-              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +8.2%</span>
-              <span class="stat-desc">from last week</span>
-            </div>
+            <div class="stat-value" style="margin-bottom: 0;">12</div>
           </div>
 
           <!-- Card 3 -->
-          <div class="card stat-card">
+          <div class="card stat-card" style="padding-bottom: 1.5rem;">
             <div class="stat-header">
               <span class="stat-title">Active Customers</span>
               <div class="stat-icon-wrapper warning">
                 <i class="bi bi-people-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value" id="dash-active-customers">0</div>
-            <div class="stat-footer">
-              <span class="trend-up"><i class="bi bi-arrow-up-short"></i> +4.1%</span>
-              <span class="stat-desc">from last week</span>
-            </div>
+            <div class="stat-value" style="margin-bottom: 0;">4</div>
           </div>
 
           <!-- Card 4 -->
-          <div class="card stat-card">
+          <div class="card stat-card" style="padding-bottom: 1.5rem;">
             <div class="stat-header">
-              <span class="stat-title">Stock Out Items</span>
+              <span class="stat-title">Total Products</span>
               <div class="stat-icon-wrapper danger">
-                <i class="bi bi-exclamation-triangle-fill" style="font-size: 1.25rem;"></i>
+                <i class="bi bi-box-seam-fill" style="font-size: 1.25rem;"></i>
               </div>
             </div>
-            <div class="stat-value" id="dash-stock-out">0</div>
-            <div class="stat-footer">
-              <span class="trend-down"><i class="bi bi-arrow-down-short"></i> -2.4%</span>
-              <span class="stat-desc">improvement</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Charts and Main Info Section -->
-        <div class="grid grid-cols-3" style="margin-bottom: 2rem;">
-          
-          <!-- Sales Chart Mockup -->
-          <div class="card" style="grid-column: span 2;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-              <h3 style="font-weight: 700; font-size: 1.1rem;">Weekly Sales Analytics</h3>
-              <select class="form-control" style="width: auto; padding: 0.25rem 2rem 0.25rem 0.75rem; font-size: 0.8rem; background-color: var(--bg-surface);">
-                <option>This Week</option>
-                <option>Last Week</option>
-                <option>This Month</option>
-              </select>
-            </div>
-            
-            <div class="chart-container">
-              <!-- Grid lines -->
-              <div class="chart-grid-line line-25"></div>
-              <div class="chart-grid-line line-50"></div>
-              <div class="chart-grid-line line-75"></div>
-              
-              <!-- Bars -->
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 45%;" data-value="$1,200"></div>
-                <span class="chart-label">Mon</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 60%;" data-value="$1,600"></div>
-                <span class="chart-label">Tue</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 75%;" data-value="$2,100"></div>
-                <span class="chart-label">Wed</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 50%;" data-value="$1,450"></div>
-                <span class="chart-label">Thu</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 90%;" data-value="$2,700"></div>
-                <span class="chart-label">Fri</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 80%;" data-value="$2,350"></div>
-                <span class="chart-label">Sat</span>
-              </div>
-              <div class="chart-bar-wrapper">
-                <div class="chart-bar" style="height: 35%;" data-value="$980"></div>
-                <span class="chart-label">Sun</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Top Products -->
-          <div class="card">
-            <h3 style="font-weight: 700; font-size: 1.1rem; margin-bottom: 1.25rem;">Top Selling Items</h3>
-            <div style="display: flex; flex-direction: column; gap: 1rem;" id="dash-top-products">
-              <!-- Top products injected here -->
-            </div>
+            <div class="stat-value" style="margin-bottom: 0;">8</div>
           </div>
 
         </div>
@@ -226,8 +131,8 @@
                   <th>Action</th>
                 </tr>
               </thead>
-              <tbody id="dash-recent-transactions">
-                <!-- Transactions injected here -->
+              <tbody>
+                <!-- Transactions will be injected here -->
               </tbody>
             </table>
           </div>
@@ -236,84 +141,5 @@
       </main>
     </div>
   </div>
-
-  <script>
-    function initDashboard() {
-      const items = JSON.parse(localStorage.getItem('items')) || [];
-      const customers = JSON.parse(localStorage.getItem('customers')) || [];
-      const orders = JSON.parse(localStorage.getItem('orders')) || [];
-
-      // Calculate Stats
-      const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
-      const ordersProcessed = orders.length;
-      const activeCustomers = customers.filter(c => c.status === 'active').length;
-      const stockOutItems = items.filter(i => i.qty <= 0).length;
-
-      document.getElementById('dash-total-revenue').textContent = '$' + totalRevenue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
-      document.getElementById('dash-orders-processed').textContent = ordersProcessed;
-      document.getElementById('dash-active-customers').textContent = activeCustomers;
-      document.getElementById('dash-stock-out').textContent = stockOutItems;
-
-      // Calculate Top Products
-      let itemSales = {};
-      orders.forEach(o => {
-        o.items.forEach(i => {
-          if (!itemSales[i.code]) {
-            itemSales[i.code] = { name: i.name, category: i.category, qty: 0, rev: 0 };
-          }
-          itemSales[i.code].qty += i.cartQty;
-          itemSales[i.code].rev += (i.price * i.cartQty);
-        });
-      });
-
-      const topProducts = Object.values(itemSales).sort((a, b) => b.qty - a.qty).slice(0, 3);
-      const topProductsContainer = document.getElementById('dash-top-products');
-      topProductsContainer.innerHTML = '';
-      
-      if (topProducts.length === 0) {
-        topProductsContainer.innerHTML = '<p style="color: var(--text-muted); font-size: 0.85rem;">No sales data available.</p>';
-      } else {
-        topProducts.forEach((tp, idx) => {
-          topProductsContainer.innerHTML += `
-            <div style="display: flex; align-items: center; gap: 0.75rem; border-bottom: ${idx===2 ? 'none' : '1px solid var(--border-color)'}; padding-bottom: ${idx===2 ? '0' : '0.75rem'};">
-              <div style="width: 2.5rem; height: 2.5rem; background-color: var(--bg-secondary); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--text-primary); border: 1px solid var(--border-color);">0${idx + 1}</div>
-              <div style="flex: 1;">
-                <h4 style="font-size: 0.875rem; font-weight: 700;">${tp.name}</h4>
-                <span style="font-size: 0.75rem; color: var(--text-secondary);">${tp.category} &bull; ${tp.qty} sold</span>
-              </div>
-              <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-primary);">$${tp.rev.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-            </div>
-          `;
-        });
-      }
-
-      // Recent Transactions
-      const recentOrders = [...orders].reverse().slice(0, 5);
-      const tbody = document.getElementById('dash-recent-transactions');
-      tbody.innerHTML = '';
-
-      if (recentOrders.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 2rem;">No recent transactions.</td></tr>';
-      } else {
-        recentOrders.forEach(o => {
-          const cust = customers.find(c => c.id === o.customer);
-          const custName = cust ? cust.name : o.customer;
-          tbody.innerHTML += `
-            <tr>
-              <td style="font-weight: bold;">${o.id}</td>
-              <td>${custName}</td>
-              <td style="color: var(--text-secondary);">${o.date}</td>
-              <td style="font-weight: bold;">$${o.total.toFixed(2)}</td>
-              <td><span class="badge badge-success"><i class="bi bi-cash-stack"></i> Cash</span></td>
-              <td><span class="badge badge-success"><span class="status-dot"></span> Completed</span></td>
-              <td><button class="btn btn-secondary btn-sm btn-icon" title="View details (Coming Soon)"><i class="bi bi-eye-fill"></i></button></td>
-            </tr>
-          `;
-        });
-      }
-    }
-
-    initDashboard();
-  </script>
 </body>
 </html>
