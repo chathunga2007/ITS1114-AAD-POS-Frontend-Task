@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+    <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Login Page</h2>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" required>
+    </div>
+    <p id="error-msg" style="color: red; font-size: 0.875rem; display: none;"></p>
+    <button class="btn" onclick="handleLogin()">Login</button>
+    <div class="form-footer">
+        Don't have an account? <a href="Signup.html">Sign Up</a>
+    </div>
+</div>
+
+<script>
+    function handleLogin(){
+
+        let username=$('#username').val().trim();
+        let password=$('#password').val().trim();
+
+        let obj = JSON.stringify({"userName":username,"password":password});
+
+        $.ajax({
+            url:"http://localhost:8080/api/test/login",
+            type:'POST',
+            contentType:'application/json',
+            data: obj,
+            success: function (response){
+
+                console.log(response);
+
+                localStorage.setItem("JWT",response.body.token);
+                localStorage.setItem("userId",response.body.userId);
+
+                console.log(localStorage.getItem("JWT"));
+                alert("Login successful!");
+                window.location.href = "UserManagement.html";
+            },
+            error:function (response){
+                let errorMsg = $('#error-msg');
+                errorMsg.show();
+                if(response.status===403){
+                    errorMsg.text("Invalid Credentials");
+                } else {
+                    errorMsg.text("Login failed. Please try again.");
+                }
+            }
+        })
+    }
+</script>
+
+</body>
+</html>
