@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management</title>
+    <script src ="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body class="dashboard-body">
+
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h2>User Management</h2>
+        <a href="Login.html" class="btn btn-secondary btn-small" style="text-decoration: none;">Logout</a>
+    </div>
+
+    <div class="filter-section">
+        <div class="form-group">
+            <label for="searchUsername">Search by Username</label>
+            <input type="text" name="searchUsername" id="searchUsername" placeholder="Enter username...">
+        </div>
+        <button type="button" class="btn" onclick="searchUsers()">Search</button>
+        <button type="button" class="btn btn-secondary" onclick="clearTable()">Clear</button>
+    </div>
+
+    <h3>User List</h3>
+    <div class="table-container">
+
+<table border="2pt" id="userTbl">
+    <thead>
+    <th>User ID</th>
+    <th>User name</th>
+    <th>User Role</th>
+    <th>Action</th>
+    </thead>
+    <tbody id="userTblBody">
+    </tbody>
+    </table>
+    </div>
+
+    <h3>User Details</h3>
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="userIdTxt">User Id</label>
+            <input type="text" id="userIdTxt" name="userId" disabled>
+        </div>
+        <div class="form-group">
+            <label for="userNameTxt">User Name</label>
+            <input type="text" id="userNameTxt" name="userName">
+        </div>
+        <div class="form-group">
+            <label for="userRolesTxt">Roles</label>
+            <input type="text" id="userRolesTxt" name="userRoles">
+        </div>
+    </div>
+    <button type="button" class="btn" onclick="updateUser()" style="max-width: 200px;">Update User</button>
+</div>
+
+<script>
+
+    function updateUser(){
+        let userId = $('#userIdTxt').val();
+        let userName = $('#userNameTxt').val();
+        let userRoles = $('#userRolesTxt').val();
+
+        const obj = JSON.stringify({"userId":userId,"username":userName,"userRoles":userRoles});
+
+        $.ajax({
+            url:"http://localhost:8080/api/test/update-user",
+            type:"PUT",
+            contentType:"application/json",
+            headers:{
+                'Authorization': 'Bearer '+localStorage.getItem("JWT")
+            },
+            data:obj,
+            success:function (response){
+                alert(response.message);
+            }
+        })
+    }
+
+    function selectUser(userId){
+        $.ajax({
+            url:"http://localhost:8080/api/test/select-user/"+userId,
+            type:"GET",
+            contentType:"application/json",
+            headers:{
+                'Authorization': 'Bearer '+localStorage.getItem("JWT")
+            },
+            success:function (response){
+                $('#userIdTxt').val(response.body.userId);
+                $('#userNameTxt').val(response.body.username);
+                $('#userRolesTxt').val(response.body.userRoles);
+            }
+        })
+
+    }
+
+    $.ajax({
+        url:"http://localhost:8080/api/test/getAllUsers",
+        type:"GET",
+        contentType:"application/json",
+        headers:{
+            'Authorization':'Bearer '+localStorage.getItem("JWT")
+        },
+        success:function (response){
+            console.log("getAllUsers response:", response);
+            let html = "";
+            if (response.body && response.body.length > 0) {
+                for (const responseElement of response.body) {
+                    html += `<tr> <td>${responseElement.userId}</td>
+<td>${responseElement.username}</td>
+<td>${responseElement.userRoles}</td>
+<td><button type="button" class="btn btn-danger btn-small" onclick="deleteUser(${responseElement.userId})">Delete</button></td>
+<td><button type="button" class="btn btn-secondary btn-small" onclick="selectUser(${responseElement.userId})">Edit</button></td></tr>`;
+                }
+            }
+            $('#userTblBody').html(html);
+        }
+    });
+
+    function deleteUser(userId){
+        console.log(userId);
+        $.ajax({
+            url:"http://localhost:8080/api/test/"+userId,
+            type:"DELETE",
+            contentType:"application/json",
+            headers:{
+                'Authorization':'Bearer '+localStorage.getItem("JWT")
+            },
+            success:function (response){
+                alert("User deleted successful");
+            }
+        });
+    }
+
+    function clearTable(){
+        $.ajax({
+            url:"http://localhost:8080/api/test/getAllUsers",
+            type:"GET",
+            contentType:"application/json",
+            headers:{
+                'Authorization':'Bearer '+localStorage.getItem("JWT")
+            },
+            success:function (response){
+                let html = "";
+                for (const responseElement of response.body) {
+                    html += `<tr> <td id="userId">${responseElement.userId}</td>
+<td>${responseElement.username}</td>
+<td>${responseElement.userRoles}</td>
+<td><button type="button" class="btn btn-danger btn-small" onclick="deleteUser(${responseElement.userId})">Delete</button></td>
+<td><button type="button" class="btn btn-secondary btn-small" onclick="selectUser(${responseElement.userId})">Edit</button></td></tr>`
+                }
+
+                $('#userTblBody').html(html);
+            }
+        });
+
+        $('#searchUsername').val("");
+    }
+
+    function searchUsers(){
+
+        let searchValue = $('#searchUsername').val();
+
+        let param = {
+            userName : searchValue
+        }
+
+        let queryParam = $.param(param);
+
+        $.ajax({
+            url: "http://localhost:8080/api/test/filter-users?"+queryParam,
+            type: "GET",
+            contentType: "application/json",
+            headers: {
+                'Authorization':'Bearer '+localStorage.getItem("JWT")
+            },
+            success:function (response) {
+
+                let html = "";
+                for (const responseElement of response.body) {
+                    html += `<tr> <td>${responseElement.userId}</td>
+<td>${responseElement.username}</td>
+<td>${responseElement.userRoles}</td>
+<td><button type="button" class="btn btn-danger btn-small" onclick="deleteUser(${responseElement.userId})">Delete</button></td>
+<td><button type="button" class="btn btn-secondary btn-small" onclick="selectUser(${responseElement.userId})">Edit</button></td></tr>`
+                }
+
+                $('#userTblBody').html(html);
+
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
