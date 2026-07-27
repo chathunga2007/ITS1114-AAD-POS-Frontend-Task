@@ -72,11 +72,8 @@
                alert(response.message || "User created successfully!")
                window.location.href = "Login.html";
            },
-           error:function (xhr){
-               let errorMsg = $('#signup-error-msg');
-               errorMsg.show();
-               console.error(xhr);
-               errorMsg.text("Failed to save user. " + (xhr.responseJSON?.message || xhr.responseText || ""));
+           error:function (response){
+               alert(response.message)
            }
         });
     }
