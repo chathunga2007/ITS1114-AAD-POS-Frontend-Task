@@ -97,5 +97,5 @@ Free to use and modify for educational purposes.
 ---
 
 <div align="center">
-  Made with ❤️ Chathunga Bimsara using Spring Boot &nbsp;|&nbsp; IJSE AD - Spring Security & User Management Frontend
+  Made with ❤️ Chathunga Bimsara using Spring Boot &nbsp;|&nbsp; IJSE ITS1114 - AAD Spring Security & User Management Frontend
 </div>
